@@ -4,20 +4,17 @@
  * and open the template in the editor.
  */
 package radiorelogio;
-
 /**
  *
  * @author a1600079
  */
 public class InterfaceGrafica extends javax.swing.JFrame {
-
     /**
      * Creates new form InterfaceGrafica
      */
     public InterfaceGrafica() {
         initComponents();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
