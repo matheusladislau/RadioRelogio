@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package classes;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-/**
- *
- * @author a1600079
- */
 public class Hora extends Thread{
     String horaCompleta;
     String hora;
@@ -29,7 +20,6 @@ public class Hora extends Thread{
             }
         }
     }
-
     public String getHoraCompleta(){
         this.horaCompleta=new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
         return this.horaCompleta;
