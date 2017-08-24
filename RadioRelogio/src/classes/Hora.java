@@ -13,12 +13,15 @@ import java.util.logging.Logger;
  * @author a1600079
  */
 public class Hora extends Thread{
+    String horaCompleta;
     String hora;
+    String minuto;
     @Override
     public void run(){
         while(true){
             try{
-                this.hora=new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
+                this.horaCompleta=new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
+                this.hora=new SimpleDateFormat("HH").format(Calendar.getInstance().getTime());
                 System.out.println(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
                 Thread.sleep(1000);
             } catch (InterruptedException ex) {
@@ -27,11 +30,20 @@ public class Hora extends Thread{
         }
     }
 
+    public String getHoraCompleta(){
+        this.horaCompleta=new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
+        return this.horaCompleta;
+    }
     public String getHora(){
-        this.hora=new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
+        this.hora=new SimpleDateFormat("HH").format(Calendar.getInstance().getTime());
+        Calendar c=Calendar.getInstance();
         return this.hora;
     }
-    
+    public String getMinuto(){
+        this.hora=new SimpleDateFormat("mm").format(Calendar.getInstance().getTime());
+        Calendar c=Calendar.getInstance();
+        return this.hora;
+    }
 }
   
 

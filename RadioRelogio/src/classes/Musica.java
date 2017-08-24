@@ -10,7 +10,16 @@ public class Musica extends Thread{
     @Override
     public void run(){
         try{
-            musica=new FileInputStream("src/musica/Back in Black.mp3");
+            //musica=new FileInputStream("src/musica/Back in Black.mp3");
+            tocador=new Player(musica);
+            tocador.play();
+            }catch(Exception e){
+                System.out.println(e);
+        }
+    }
+    public void falar(String hora){
+        try{ 
+            musica=new FileInputStream("src/audio/"+hora+".mp3");
             tocador=new Player(musica);
             tocador.play();
             }catch(Exception e){
