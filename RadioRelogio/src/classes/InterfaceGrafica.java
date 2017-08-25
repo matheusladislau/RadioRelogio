@@ -55,7 +55,7 @@ public class InterfaceGrafica extends javax.swing.JFrame{
         jScrollPane1.setViewportView(tbl_musica);
 
         btn_falar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn_falar.setText("Falar Hora");
+        btn_falar.setText("Informar Hora");
         btn_falar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_falarActionPerformed(evt);
