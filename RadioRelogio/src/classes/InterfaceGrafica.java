@@ -2,8 +2,8 @@ package classes;
 //import com.sun.xml.internal.txw2.TXW;
 public class InterfaceGrafica extends javax.swing.JFrame{
         static Musica musica=new Musica();
-        static Hora h=new Hora();
-        static String hora=h.getHora();
+        static Tempo t=new Tempo();
+        static String hora=t.getHora();
     public InterfaceGrafica(){
         initComponents();
     }
@@ -109,17 +109,17 @@ public class InterfaceGrafica extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_playActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_playActionPerformed
-        txt_hora.setText(h.horaCompleta);
+        txt_hora.setText(t.horaCompleta);
     }//GEN-LAST:event_btn_playActionPerformed
 
     private void btn_falarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_falarActionPerformed
-        String hora=h.getHora();
-        musica.falar("HRS"+h.getHora()); 
-        musica.falar("MIN"+h.getMinuto()); 
+        String hora=t.getHora();
+        musica.falar("HRS"+t.getHora()); 
+        musica.falar("MIN"+t.getMinuto()); 
     }//GEN-LAST:event_btn_falarActionPerformed
     public static void main(String args[]){
         musica.start();
-        h.start();
+        t.start();
 //
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
