@@ -6,6 +6,7 @@ public class InterfaceGrafica extends javax.swing.JFrame{
         static String hora=t.getHora();
     public InterfaceGrafica(){
         initComponents();
+        musica.setNMusicas(2);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -40,6 +41,11 @@ public class InterfaceGrafica extends javax.swing.JFrame{
         });
 
         btn_pause.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/img_pause32.png"))); // NOI18N
+        btn_pause.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pauseActionPerformed(evt);
+            }
+        });
 
         tbl_musica.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,6 +116,7 @@ public class InterfaceGrafica extends javax.swing.JFrame{
 
     private void btn_playActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_playActionPerformed
         txt_hora.setText(t.horaCompleta);
+        musica.run();
     }//GEN-LAST:event_btn_playActionPerformed
 
     private void btn_falarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_falarActionPerformed
@@ -117,13 +124,17 @@ public class InterfaceGrafica extends javax.swing.JFrame{
         musica.falar("HRS"+t.getHora()); 
         musica.falar("MIN"+t.getMinuto()); 
     }//GEN-LAST:event_btn_falarActionPerformed
+
+    private void btn_pauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pauseActionPerformed
+        musica.stop();
+    }//GEN-LAST:event_btn_pauseActionPerformed
     public static void main(String args[]){
         musica.start();
         t.start();
 //
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try{
+            for(javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
