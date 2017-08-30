@@ -6,30 +6,31 @@ import javax.swing.JOptionPane;
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
 import javazoom.jl.player.Player;
-public class Musica extends Thread{
+public class Tocador extends Thread{
     Player tocador;
     FileInputStream musica;
-    static int nMusicas;
+    static int musicaAtual;
     @Override
     public void run(){
         //leitura de todos arquivos de um diretório
-        File file=new File("src/musica/");
-        File afile[]=file.listFiles();
-        System.out.println(afile[1]);
+        File diretorio=new File("src/musica/");
+        File afile[]=diretorio.listFiles();
 
         Player tocador;
         FileInputStream musica;
         try{
             //musica = new FileInputStream("src/musicas/AC-DC - Back in Black.mp3");
-            for(int i=0; i<nMusicas; i++){
-                JOptionPane.showMessageDialog(null,"Tocando musica: "+afile[i]);
+            for(int i=0; i<afile.length; i++){
                 musica=new FileInputStream(afile[i]);
+                JOptionPane.showMessageDialog(null,"Tocando musica: "+afile[i]);
                 tocador=new Player(musica);
                 tocador.play(); 
             } 
         }catch(Exception e){
             System.out.println(e);
         }
+    }
+    public void atualizarPlayer(){
     }
     public void falar(String hora){
         try{ 
@@ -41,6 +42,6 @@ public class Musica extends Thread{
         }
     }
     public void setNMusicas(int n){
-        this.nMusicas=n;
+        this.musicaAtual=n;
     }
 }
