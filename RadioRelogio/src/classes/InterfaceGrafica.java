@@ -1,12 +1,11 @@
 package classes;
 //import com.sun.xml.internal.txw2.TXW;
 public class InterfaceGrafica extends javax.swing.JFrame{
-        static Tocador tocador=new Tocador();
-        static Tempo t=new Tempo();
-        static String hora=t.getHoraAtual();
+    static boolean tocando;
+    static TocadorMusica musica;
+    static Tempo t;
     public InterfaceGrafica(){
         initComponents();
-        tocador.setMusicaAtual(2);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -163,17 +162,20 @@ public class InterfaceGrafica extends javax.swing.JFrame{
 
     private void btn_incluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_incluirActionPerformed
         setHora();
-        tocador.run();
     }//GEN-LAST:event_btn_incluirActionPerformed
         public static void setHora(){
-            txt_hora.setText(t.getHoraCompletaAtual());
+            txt_hora.setText(new Tempo().getHoraCompletaAtual());
+            if(new Tempo().getMinutoAtual()=="00"){
+                //continuar
+            }
         }
     private void btn_informarHorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_informarHorasActionPerformed
         new InformaHora().start();
     }//GEN-LAST:event_btn_informarHorasActionPerformed
 
     private void btn_pararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pararActionPerformed
-        tocador.stop();
+        this.musica.stop();
+        this.tocando=false;
     }//GEN-LAST:event_btn_pararActionPerformed
 
     private void btn_proximaMusicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_proximaMusicaActionPerformed
@@ -181,11 +183,15 @@ public class InterfaceGrafica extends javax.swing.JFrame{
     }//GEN-LAST:event_btn_proximaMusicaActionPerformed
 
     private void btn_tocarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tocarActionPerformed
-        tocador.start();
+        if(!tocando){
+            this.musica=new TocadorMusica();
+            this.musica.start();
+            this.tocando=true;
+        }
     }//GEN-LAST:event_btn_tocarActionPerformed
 
     private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btn_excluirActionPerformed
     public static void main(String args[]){
         try{
@@ -205,7 +211,6 @@ public class InterfaceGrafica extends javax.swing.JFrame{
             java.util.logging.Logger.getLogger(InterfaceGrafica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 //
-
         java.awt.EventQueue.invokeLater(new Runnable(){
             @Override
             protected Object clone() throws CloneNotSupportedException {
