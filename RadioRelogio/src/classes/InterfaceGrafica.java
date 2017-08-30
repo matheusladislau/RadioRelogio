@@ -1,12 +1,12 @@
 package classes;
 //import com.sun.xml.internal.txw2.TXW;
 public class InterfaceGrafica extends javax.swing.JFrame{
-        static Tocador musica=new Tocador();
+        static Tocador tocador=new Tocador();
         static Tempo t=new Tempo();
-        static String hora=t.getHora();
+        static String hora=t.getHoraAtual();
     public InterfaceGrafica(){
         initComponents();
-        musica.setNMusicas(2);
+        tocador.setMusicaAtual(2);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -14,15 +14,17 @@ public class InterfaceGrafica extends javax.swing.JFrame{
 
         txt_titulo = new javax.swing.JLabel();
         txt_hora = new javax.swing.JLabel();
-        btn_play = new javax.swing.JButton();
-        btn_pause = new javax.swing.JButton();
+        btn_incluir = new javax.swing.JButton();
+        btn_parar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_musica = new javax.swing.JTable();
-        btn_falar = new javax.swing.JButton();
-        btn_proxima = new javax.swing.JButton();
+        btn_informarHoras = new javax.swing.JButton();
+        btn_proximaMusica = new javax.swing.JButton();
+        btn_tocar = new javax.swing.JButton();
+        btn_excluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         txt_titulo.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
         txt_titulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -35,45 +37,67 @@ public class InterfaceGrafica extends javax.swing.JFrame{
         txt_hora.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         txt_hora.setText("20:20:20");
 
-        btn_play.setText("Play");
-        btn_play.addActionListener(new java.awt.event.ActionListener() {
+        btn_incluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_incluir.setText("Incluir Música");
+        btn_incluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_playActionPerformed(evt);
+                btn_incluirActionPerformed(evt);
             }
         });
 
-        btn_pause.setText("Stop");
-        btn_pause.addActionListener(new java.awt.event.ActionListener() {
+        btn_parar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_parar.setText("Parar");
+        btn_parar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_pauseActionPerformed(evt);
+                btn_pararActionPerformed(evt);
             }
         });
 
         tbl_musica.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Música", "Tempo"
             }
         ));
         jScrollPane1.setViewportView(tbl_musica);
 
-        btn_falar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn_falar.setText("Informar Hora");
-        btn_falar.addActionListener(new java.awt.event.ActionListener() {
+        btn_informarHoras.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_informarHoras.setText("Informar Hora");
+        btn_informarHoras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_falarActionPerformed(evt);
+                btn_informarHorasActionPerformed(evt);
             }
         });
 
-        btn_proxima.setText("Next");
-        btn_proxima.addActionListener(new java.awt.event.ActionListener() {
+        btn_proximaMusica.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_proximaMusica.setText("Próxima Musica");
+        btn_proximaMusica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_proximaActionPerformed(evt);
+                btn_proximaMusicaActionPerformed(evt);
+            }
+        });
+
+        btn_tocar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_tocar.setText("Tocar");
+        btn_tocar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tocarActionPerformed(evt);
+            }
+        });
+
+        btn_excluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_excluir.setText("Excluir Música");
+        btn_excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_excluirActionPerformed(evt);
             }
         });
 
@@ -82,70 +106,88 @@ public class InterfaceGrafica extends javax.swing.JFrame{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(txt_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(btn_play)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_pause)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_proxima)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_falar)
-                .addGap(44, 44, 44))
-            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_proximaMusica, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addComponent(txt_hora)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_incluir, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_tocar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btn_informarHoras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_parar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(txt_hora)
+                        .addGap(107, 107, 107)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(txt_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(txt_hora, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_excluir)
+                    .addComponent(btn_incluir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_play)
-                    .addComponent(btn_pause)
-                    .addComponent(btn_proxima)
-                    .addComponent(btn_falar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75))
+                    .addComponent(btn_tocar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_parar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_proximaMusica)
+                    .addComponent(btn_informarHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_playActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_playActionPerformed
-        txt_hora.setText(t.horaCompleta);
-        musica.run();
-    }//GEN-LAST:event_btn_playActionPerformed
+    private void btn_incluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_incluirActionPerformed
+        setHora();
+        tocador.run();
+    }//GEN-LAST:event_btn_incluirActionPerformed
+        public static void setHora(){
+            txt_hora.setText(t.getHoraCompletaAtual());
+        }
+    private void btn_informarHorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_informarHorasActionPerformed
+        new InformaHora().start();
+    }//GEN-LAST:event_btn_informarHorasActionPerformed
 
-    private void btn_falarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_falarActionPerformed
-        String hora=t.getHora();
-        musica.falar("HRS"+t.getHora()); 
-        musica.falar("MIN"+t.getMinuto()); 
-    }//GEN-LAST:event_btn_falarActionPerformed
+    private void btn_pararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pararActionPerformed
+        tocador.stop();
+    }//GEN-LAST:event_btn_pararActionPerformed
 
-    private void btn_pauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pauseActionPerformed
-        musica.stop();
-    }//GEN-LAST:event_btn_pauseActionPerformed
-
-    private void btn_proximaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_proximaActionPerformed
+    private void btn_proximaMusicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_proximaMusicaActionPerformed
             
-    }//GEN-LAST:event_btn_proximaActionPerformed
+    }//GEN-LAST:event_btn_proximaMusicaActionPerformed
+
+    private void btn_tocarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tocarActionPerformed
+        tocador.start();
+    }//GEN-LAST:event_btn_tocarActionPerformed
+
+    private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_excluirActionPerformed
     public static void main(String args[]){
-        musica.start();
-        t.start();
-//
         try{
             for(javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if("Nimbus".equals(info.getName())) {
@@ -163,6 +205,7 @@ public class InterfaceGrafica extends javax.swing.JFrame{
             java.util.logging.Logger.getLogger(InterfaceGrafica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 //
+
         java.awt.EventQueue.invokeLater(new Runnable(){
             @Override
             protected Object clone() throws CloneNotSupportedException {
@@ -176,15 +219,14 @@ public class InterfaceGrafica extends javax.swing.JFrame{
                 return super.equals(obj); //To change body of generated methods, choose Tools | Templates.
             }
         });
-        while(true){
-            //txt_hora.setText(horaCompleta);
-        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_falar;
-    private javax.swing.JButton btn_pause;
-    private javax.swing.JButton btn_play;
-    private javax.swing.JButton btn_proxima;
+    private javax.swing.JButton btn_excluir;
+    private javax.swing.JButton btn_incluir;
+    private javax.swing.JButton btn_informarHoras;
+    private javax.swing.JButton btn_parar;
+    private javax.swing.JButton btn_proximaMusica;
+    private javax.swing.JButton btn_tocar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbl_musica;
     private static javax.swing.JLabel txt_hora;

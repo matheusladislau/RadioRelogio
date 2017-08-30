@@ -20,28 +20,16 @@ public class Tocador extends Thread{
         FileInputStream musica;
         try{
             //musica = new FileInputStream("src/musicas/AC-DC - Back in Black.mp3");
-            for(int i=0; i<afile.length; i++){
-                musica=new FileInputStream(afile[i]);
-                JOptionPane.showMessageDialog(null,"Tocando musica: "+afile[i]);
-                tocador=new Player(musica);
-                tocador.play(); 
-            } 
+            musica=new FileInputStream(afile[musicaAtual]);
+            JOptionPane.showMessageDialog(null,"Tocando musica: "+afile[musicaAtual]);
+            tocador=new Player(musica);
+            tocador.play(); 
         }catch(Exception e){
             System.out.println(e);
         }
     }
-    public void atualizarPlayer(){
-    }
-    public void falar(String hora){
-        try{ 
-            musica=new FileInputStream("src/audio/"+hora+".mp3");
-            tocador=new Player(musica);
-            tocador.play();
-            }catch(Exception e){
-                System.out.println(e);
-        }
-    }
-    public void setNMusicas(int n){
-        this.musicaAtual=n;
+
+    public void setMusicaAtual(int valor){
+        this.musicaAtual=valor;
     }
 }

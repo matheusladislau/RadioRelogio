@@ -3,36 +3,16 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-public class Tempo extends Thread{
-    String horaCompleta;
-    String hora;
-    String minuto;
-    @Override
-    public void run(){
-        while(true){
-            try{
-                this.horaCompleta=new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
-                this.hora=new SimpleDateFormat("HH").format(Calendar.getInstance().getTime());
-                System.out.println(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Tempo.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+public class Tempo{
+    //
+    public String getHoraCompletaAtual(){
+        return new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
     }
-    public String getHoraCompleta(){
-        this.horaCompleta=new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
-        return this.horaCompleta;
+    public String getHoraAtual(){
+        return new SimpleDateFormat("HH").format(Calendar.getInstance().getTime());
     }
-    public String getHora(){
-        this.hora=new SimpleDateFormat("HH").format(Calendar.getInstance().getTime());
-        Calendar c=Calendar.getInstance();
-        return this.hora;
-    }
-    public String getMinuto(){
-        this.hora=new SimpleDateFormat("mm").format(Calendar.getInstance().getTime());
-        Calendar c=Calendar.getInstance();
-        return this.hora;
+    public String getMinutoAtual(){
+        return new SimpleDateFormat("mm").format(Calendar.getInstance().getTime());
     }
 }
   
