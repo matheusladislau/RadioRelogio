@@ -217,7 +217,7 @@ public class InterfaceGrafica extends javax.swing.JFrame{
             }
         }
     }//GEN-LAST:event_btn_tocarActionPerformed
-//
+
     private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirActionPerformed
         if(this.linhas>0){
             ((DefaultTableModel)tbl_musica.getModel()).removeRow(linhas-1);
