@@ -7,25 +7,26 @@ import javax.swing.JOptionPane;
 //import java.util.logging.Logger;
 import javazoom.jl.player.Player;
 public class TocadorMusica extends Thread{
+    static File musica;
+    public TocadorMusica(File musica){
+        this.musica=musica;
+    }
     @Override
     public void run(){
-        // leitura de todos arquivos de um diretório
-        File file = new File("src/musica/");
-        File afile[] = file.listFiles();
-        System.out.println(afile[1]);
-
-
+        File file=new File("src/musica/");
+        File afile[]=file.listFiles();
+       
         Player tocador;
         FileInputStream musica;
         try{
             //musica = new FileInputStream("src/musica/Back in Black.mp3");
-            musica=new FileInputStream(afile[1]);
+            musica=new FileInputStream(this.musica);
             tocador=new Player(musica);
+
             tocador.play();
-        } catch (Exception e) {
+            System.out.println("Tocando agora "+afile[1].getName());
+        } catch (Exception e){
             System.out.println(e);
         }
-
     }
-
 }
