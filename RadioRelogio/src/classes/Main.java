@@ -4,7 +4,7 @@ public class Main extends Thread{
         InterfaceGrafica interfacePrincipal=new InterfaceGrafica();
         interfacePrincipal.setVisible(true);
         while(true){
-            interfacePrincipal.setHora();
+            interfacePrincipal.atualizarHora();
         }
     }
 }
@@ -15,7 +15,7 @@ ok  - Utilizar interface gráfica do Java;
 ok  - Deverá apresentar um display com a hora atual, de preferência sincronizada com a hora do computador que estiver rodando a aplicação;
 ok  - Deverá ser mostrada a hora no formato: HH:MM:SS;
 ok  - Deverá conter um tabela que permita ao usuário selecionar uma lista de músicas que ele deseje ouvir;
-    - Essa tabela deverá permitir incluir e excluir arquivos MP3 para serem tocados;
+ok  - Essa tabela deverá permitir incluir e excluir arquivos MP3 para serem tocados;
     - Ao selecionar uma música na tabela e ao pressionar o botão play, a música deverá ser tocada e ao seu término, 
         caso exista, deverá iniciar a próxima música escolhida, da sequência, e assim sucessivamente até a última música da lista;
     - A qualquer momento o usuário poderá incluir ou excluir música, inclusive se o aplicativo estiver tocando alguma;

@@ -24,7 +24,7 @@ public class TocadorMusica extends Thread{
             tocador=new Player(musica);
 
             tocador.play();
-            System.out.println("Tocando agora "+afile[1].getName());
+            System.out.println("Tocando agora "+this.musica.getName());
         } catch (Exception e){
             System.out.println(e);
         }
