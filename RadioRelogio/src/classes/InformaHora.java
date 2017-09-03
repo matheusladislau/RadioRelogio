@@ -2,7 +2,6 @@ package classes;
 import java.io.FileInputStream;
 import javazoom.jl.player.Player;
 public class InformaHora extends Thread{
-    
     @Override
     public void run(){
         Player tocador;

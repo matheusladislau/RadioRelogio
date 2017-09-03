@@ -29,10 +29,8 @@ public class InterfaceGrafica extends javax.swing.JFrame{
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_musica = new javax.swing.JTable();
         btn_informarHora = new javax.swing.JButton();
-        btn_proximaMusica = new javax.swing.JButton();
         btn_tocar = new javax.swing.JButton();
         btn_excluir = new javax.swing.JButton();
-        btn_musicaAnterior = new javax.swing.JButton();
         btn_alarme = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,8 +45,8 @@ public class InterfaceGrafica extends javax.swing.JFrame{
         txt_titulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         txt_hora.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        txt_hora.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        txt_hora.setText("20:20:20");
+        txt_hora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_hora.setText("00:00:00");
 
         btn_incluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_incluir.setText("Incluir Música");
@@ -93,14 +91,6 @@ public class InterfaceGrafica extends javax.swing.JFrame{
             }
         });
 
-        btn_proximaMusica.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn_proximaMusica.setText("Tocar Próxima");
-        btn_proximaMusica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_proximaMusicaActionPerformed(evt);
-            }
-        });
-
         btn_tocar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_tocar.setText("Tocar");
         btn_tocar.addActionListener(new java.awt.event.ActionListener() {
@@ -117,14 +107,6 @@ public class InterfaceGrafica extends javax.swing.JFrame{
             }
         });
 
-        btn_musicaAnterior.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn_musicaAnterior.setText("Tocar Anterior");
-        btn_musicaAnterior.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_musicaAnteriorActionPerformed(evt);
-            }
-        });
-
         btn_alarme.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_alarme.setText("Configurar Alarme");
         btn_alarme.addActionListener(new java.awt.event.ActionListener() {
@@ -138,38 +120,30 @@ public class InterfaceGrafica extends javax.swing.JFrame{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(txt_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(253, 253, 253)
+                                .addGap(218, 218, 218)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btn_parar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btn_excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btn_musicaAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btn_proximaMusica, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btn_incluir, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btn_tocar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(78, 78, 78)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btn_informarHora, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btn_alarme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btn_incluir, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_tocar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(txt_hora)))
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btn_informarHora, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_alarme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(txt_hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,7 +157,7 @@ public class InterfaceGrafica extends javax.swing.JFrame{
                     .addComponent(btn_alarme))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_excluir)
                     .addComponent(btn_incluir))
@@ -191,16 +165,12 @@ public class InterfaceGrafica extends javax.swing.JFrame{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_tocar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_parar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_proximaMusica)
-                    .addComponent(btn_musicaAnterior))
-                .addGap(18, 18, 18))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void btn_incluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_incluirActionPerformed
         JFileChooser arquivo=new JFileChooser();
         arquivo.setFileSelectionMode(JFileChooser.APPROVE_OPTION);
@@ -245,30 +215,29 @@ public class InterfaceGrafica extends javax.swing.JFrame{
         this.tocando=false;
     }//GEN-LAST:event_btn_pararActionPerformed
 
-    private void btn_proximaMusicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_proximaMusicaActionPerformed
-        nMusicaAtual++;
-        pararTocador();
-        tocar();
-    }//GEN-LAST:event_btn_proximaMusicaActionPerformed
-
     private void btn_tocarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tocarActionPerformed
-        tocar();
+        if(tocando)
+            pararTocador();
+        if(tbl_musica.getSelectedRow()>=0){
+            tocar();
+//            ((DefaultTableModel)tbl_musica.getModel()).addRow(rowData);
+        }else{
+            JOptionPane.showMessageDialog(null,"Selecione uma música");
+        }
     }//GEN-LAST:event_btn_tocarActionPerformed
 
     private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirActionPerformed
+
+        excluirMusica();
+/*
         if(this.linhas>0){
             ((DefaultTableModel)tbl_musica.getModel()).removeRow(linhas-1);
             this.linhas--;
         }else{
             JOptionPane.showMessageDialog(null,"Não há musicas a serem excluídas");
         }
+*/
     }//GEN-LAST:event_btn_excluirActionPerformed
-
-    private void btn_musicaAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_musicaAnteriorActionPerformed
-        pararTocador();
-        nMusicaAtual--;
-        tocar();
-    }//GEN-LAST:event_btn_musicaAnteriorActionPerformed
 
     private void btn_alarmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alarmeActionPerformed
         this.alarme=JOptionPane.showInputDialog("Informe hora e minuto para prograr o alarme.\n"
@@ -307,19 +276,19 @@ public class InterfaceGrafica extends javax.swing.JFrame{
             }
         });
     }
+    public void excluirMusica(){
+        musicas.remove(tbl_musica.getSelectedRow());
+        ((DefaultTableModel)tbl_musica.getModel()).removeRow(tbl_musica.getSelectedRow());
+    }
     public void pararTocador(){
         this.tocador.stop();
         this.tocando=false;
     }
     public void tocar(){
-        if(linhas<=0){
-            JOptionPane.showMessageDialog(null,"Não há músicas selecionadas");
-        }else{
-            if(!tocando){
-                this.tocador=new TocadorMusica(musicas.get(nMusicaAtual));
-                this.tocador.start();
-                this.tocando=true;
-            }
+        if(!tocando){
+            this.tocador=new TocadorMusica(musicas.get(tbl_musica.getSelectedRow()));
+            this.tocador.start();
+            this.tocando=true;
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -327,9 +296,7 @@ public class InterfaceGrafica extends javax.swing.JFrame{
     private javax.swing.JButton btn_excluir;
     private javax.swing.JButton btn_incluir;
     private javax.swing.JButton btn_informarHora;
-    private javax.swing.JButton btn_musicaAnterior;
     private javax.swing.JButton btn_parar;
-    private javax.swing.JButton btn_proximaMusica;
     private javax.swing.JButton btn_tocar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbl_musica;
