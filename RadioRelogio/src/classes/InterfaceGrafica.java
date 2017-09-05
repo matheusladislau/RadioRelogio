@@ -14,7 +14,8 @@ public class InterfaceGrafica extends javax.swing.JFrame{
     static int linhas=0;
     static int nMusicaAtual=0;
     static String alarme;
-//
+
+    
     public InterfaceGrafica(){
         initComponents();
     }
