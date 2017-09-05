@@ -183,7 +183,7 @@ public class InterfaceGrafica extends javax.swing.JFrame{
             ((DefaultTableModel)tbl_musica.getModel()).addRow(new Object[]{mp3Selecionado.getName()});
             linhas++;
         }else{
-            JOptionPane.showMessageDialog(null,"Arquivo não selecionado!");
+            JOptionPane.showMessageDialog(null,"Nenhum arquivo selecionado.");
         }
     }//GEN-LAST:event_btn_incluirActionPerformed
         public void atualizarHora(){
@@ -192,7 +192,7 @@ public class InterfaceGrafica extends javax.swing.JFrame{
             if(alarme!=null){  
                 if(new Tempo().getHoraCompletaAtual().equals(alarme)){
                     alarme="";
-                    if(linhas<=0){
+                    if((linhas<=0)||(tbl_musica.getSelectedRow()<0)){
                         File alarm=new File("src/audio/alarme.mp3");
                         this.tocador=new TocadorMusica(alarm);
                         this.tocador.start();
@@ -202,8 +202,7 @@ public class InterfaceGrafica extends javax.swing.JFrame{
                 }
             }
             if(new Tempo().getMinutoAtual()=="00"){
-                //continuar
-                
+               
             }
         }
     private void btn_informarHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_informarHoraActionPerformed
@@ -211,7 +210,7 @@ public class InterfaceGrafica extends javax.swing.JFrame{
     }//GEN-LAST:event_btn_informarHoraActionPerformed
 
     private void btn_pararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pararActionPerformed
-        this.tocador.stop();
+        this.tocador.parar();
         this.tocando=false;
     }//GEN-LAST:event_btn_pararActionPerformed
 
@@ -279,6 +278,7 @@ public class InterfaceGrafica extends javax.swing.JFrame{
     public void excluirMusica(){
         musicas.remove(tbl_musica.getSelectedRow());
         ((DefaultTableModel)tbl_musica.getModel()).removeRow(tbl_musica.getSelectedRow());
+        linhas--;
     }
     public void pararTocador(){
         this.tocador.stop();
@@ -286,9 +286,9 @@ public class InterfaceGrafica extends javax.swing.JFrame{
     }
     public void tocar(){
         if(!tocando){
-            this.tocador=new TocadorMusica(musicas.get(tbl_musica.getSelectedRow()));
-            this.tocador.start();
-            this.tocando=true;
+                this.tocador=new TocadorMusica(musicas.get(tbl_musica.getSelectedRow()));
+                this.tocador.start();
+                this.tocando=true;
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
