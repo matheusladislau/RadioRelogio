@@ -194,7 +194,7 @@ public class InterfaceGrafica extends javax.swing.JFrame{
                     alarme="";
                     if((linhas<=0)||(tbl_musica.getSelectedRow()<0)){
                         File alarm=new File("src/audio/alarme.mp3");
-                        this.tocador=new TocadorMusica(alarm);
+                        new TocadorMusica(alarm);
                         this.tocador.start();
                     }else{
                        tocar();
@@ -286,10 +286,11 @@ public class InterfaceGrafica extends javax.swing.JFrame{
     }
     public void tocar(){
         if(!tocando){
-                this.tocador=new TocadorMusica(musicas.get(tbl_musica.getSelectedRow()));
-                this.tocador.start();
-                this.tocando=true;
+            this.tocador=new TocadorMusica(musicas.get(tbl_musica.getSelectedRow()));
+            this.tocador.start();
+            this.tocando=true;
         }
+        //System.out.println((musicas.get(tbl_musica.getSelectedRow()).()*60)/10000);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_alarme;
