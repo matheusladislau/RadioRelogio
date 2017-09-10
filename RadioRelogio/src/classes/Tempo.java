@@ -14,6 +14,9 @@ public class Tempo{
     public String getMinutoAtual(){
         return new SimpleDateFormat("mm").format(Calendar.getInstance().getTime());
     }
+    public String getSegundoAtual(){
+        return new SimpleDateFormat("ss").format(Calendar.getInstance().getTime());
+    }
 }
   
 

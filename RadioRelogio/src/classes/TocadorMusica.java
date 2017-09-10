@@ -2,35 +2,52 @@ package classes;
 import java.io.File;
 import java.io.FileInputStream;
 import javax.swing.JOptionPane;
-//import java.io.FileNotFoundException;
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
 import javazoom.jl.player.Player;
 public class TocadorMusica extends Thread{
     static File musica;
+    static boolean tocando=false;
 //
-    public TocadorMusica(File musica){
-        this.musica=musica;
+    public TocadorMusica(){
+        
     }
+    
+    public TocadorMusica(File f){
+        this.musica=f;
+    }
+    
     @Override
     public void run(){
-            File file=new File("src/musica/");
-            File afile[]=file.listFiles();   
-            Player tocador;
-            FileInputStream musica;
-            try{
-                //musica = new FileInputStream("src/musica/Back in Black.mp3");
-                musica=new FileInputStream(this.musica);
-                tocador=new Player(musica);
-
-                tocador.play();
-                //System.out.println("Tocando agora "+this.musica.getName());
-            } catch (Exception e){
-                System.out.println(e);
+        File file=new File("src/musica/");
+        File afile[]=file.listFiles();   
+        Player tocador;
+        FileInputStream musica;
+        try{
+            //musica = new FileInputStream("src/musica/Back in Black.mp3");
+            musica=new FileInputStream(this.musica);
+            tocador=new Player(musica);
+            tocador.play();
+        } catch (Exception e){
+            System.out.println(e);
             }
-            notifyAll();
     }
+    
+    public synchronized void tocar(File arqMusica){
+        while(tocando){
+            try{
+                wait();
+            }catch(Exception ex){
+                System.out.println(ex);
+            }
+        }
+        this.tocando=true;
+        this.musica=arqMusica;
+        run();
+        this.tocando=false;
+        notifyAll();
+    }
+    
     public void parar(){
-        stop();
+        this.tocando=false;
+        this.stop();
     }
 }
