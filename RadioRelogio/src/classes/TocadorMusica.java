@@ -10,11 +10,9 @@ public class TocadorMusica extends Thread{
     public TocadorMusica(){
         
     }
-    
     public TocadorMusica(File f){
         this.musica=f;
     }
-    
     @Override
     public void run(){
         File file=new File("src/musica/");
@@ -22,7 +20,6 @@ public class TocadorMusica extends Thread{
         Player tocador;
         FileInputStream musica;
         try{
-            //musica = new FileInputStream("src/musica/Back in Black.mp3");
             musica=new FileInputStream(this.musica);
             tocador=new Player(musica);
             tocador.play();
@@ -45,7 +42,7 @@ public class TocadorMusica extends Thread{
         this.tocando=false;
         notifyAll();
     }
-    
+
     public void parar(){
         this.tocando=false;
         this.stop();

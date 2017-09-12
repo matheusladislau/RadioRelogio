@@ -6,11 +6,11 @@ public class InformaHora extends Thread{
     public void run(){
         Player tocador;
         FileInputStream musica;
-        try{//fala hora:
+        try{
             musica=new FileInputStream("src/audio/HRS"+new Tempo().getHoraAtual()+".mp3");
             tocador=new Player(musica);
             tocador.play();
-            //fala minutos:
+            //
             musica=new FileInputStream("src/audio/MIN"+new Tempo().getMinutoAtual()+".mp3");
             tocador=new Player(musica);
             tocador.play();

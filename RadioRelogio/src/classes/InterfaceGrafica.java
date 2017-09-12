@@ -1,5 +1,4 @@
 package classes;
-//import com.sun.xml.internal.txw2.TXW;
 import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
@@ -228,14 +227,6 @@ public class InterfaceGrafica extends javax.swing.JFrame{
     private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirActionPerformed
         if(musicaSelecionada()>-1)
         excluirMusica();
-/*
-        if(this.linhas>0){
-            ((DefaultTableModel)tbl_musica.getModel()).removeRow(linhas-1);
-            this.linhas--;
-        }else{
-            JOptionPane.showMessageDialog(null,"Não há musicas a serem excluídas");
-        }
-*/
     }//GEN-LAST:event_btn_excluirActionPerformed
 
     private void btn_alarmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alarmeActionPerformed
@@ -265,14 +256,14 @@ public class InterfaceGrafica extends javax.swing.JFrame{
         java.awt.EventQueue.invokeLater(new Runnable(){
             @Override
             protected Object clone() throws CloneNotSupportedException {
-                return super.clone(); //To change body of generated methods, choose Tools | Templates.
+                return super.clone();
             }
             public void run(){
                 new InterfaceGrafica().setVisible(true);
             }
             @Override
             public boolean equals(Object obj) {
-                return super.equals(obj); //To change body of generated methods, choose Tools | Templates.
+                return super.equals(obj); 
             }
         });
     }

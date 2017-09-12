@@ -4,7 +4,6 @@ import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 public class Tempo{
-    //
     public String getHoraCompletaAtual(){
         return new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
     }
