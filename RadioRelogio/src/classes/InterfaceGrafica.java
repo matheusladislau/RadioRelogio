@@ -219,7 +219,7 @@ public class InterfaceGrafica extends javax.swing.JFrame{
     }//GEN-LAST:event_btn_tocarActionPerformed
     
     private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirActionPerformed
-
+        if(musicaSelecionada()>-1)
         excluirMusica();
 /*
         if(this.linhas>0){
@@ -274,17 +274,22 @@ public class InterfaceGrafica extends javax.swing.JFrame{
         linhas--;
     }
     public void pararTocador(){
-        this.gerenciador.parar();
+        if(tocando){
+            this.gerenciador.parar();
+            this.tocando=false;
+        }
         this.tocando=false;
     }
     public void tocar(){
         if(tocando){
             pararTocador();
         }
-        gerenciador=new Gerenciador(tocador,musicas);
-        gerenciador.setMusica(musicaSelecionada());
-        gerenciador.start();
-        this.tocando=true;
+        if(musicaSelecionada()>-1){
+            gerenciador=new Gerenciador(tocador,musicas);
+            gerenciador.setMusica(musicaSelecionada());
+            gerenciador.start();
+            this.tocando=true;
+        }
     }
     public int musicaSelecionada(){
         return tbl_musica.getSelectedRow();
